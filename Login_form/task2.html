@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's authorization</title>
+
+    <link rel = "stylesheet" type = "text/css" href = "task2.css">
+
+    <!-- Создайте страницу для авторизации. На странице должны находиться поля вводов для логина и пароля, 
+        кнопка «Вход» и checkbox «Запомнить меня». С помощью CSS, который расположен в отдельном файле,
+        выровняйте форму для авторизации по центру страницы. Разработайте сценарий, который будет срабатывать 
+        по нажатию на кнопку «Вход». Сценарий должен реализовывать следующее поведение:
+        
+        Если при нажатии на кнопку поля ввода пустые – выводиться сообщение (в теле страницы, не через alert) 
+        «Вы не заполнили поля логин и пароль». Также поля вводов должны получить красный фон. 
+        Если введен логин admin и пароль 12345, то отобразить пользователю зеленым цветом сообщение 
+        «Вы авторизированы». -->
+    <script>
+        window.onload = function() {
+
+            let button = document.getElementById("button");
+            let form = document.forms[0];
+            let clear = false;
+            
+            button.onclick = function() {
+                ClearForm();
+
+                let inputLogin = form.elements.login.value;
+                let inputPasswrd = form.elements.password.value;
+
+                if (inputLogin !== "admin" || inputPasswrd !== "12345") {
+                    FrameChangeColor("inputInfoLog");
+                    FrameChangeColor("inputInfoPass");
+                    clear = true;
+                    AuthorizationText ("Incorrect login and password", "red", "red");
+                }
+                else {
+                    if (clear == true) { //позволяет заново ввести в обозначенные красным поля логин и пароль
+                        let clearAlert = document.getElementById("red");
+                        form.removeChild(clearAlert);
+                        AuthorizationText ("You're authorized", "green", "green");  
+                } 
+                    else AuthorizationText ("You're authorized", "green", "green");
+            }
+            
+                function FrameChangeColor(a) { //меняет рамку полей на красный, если неверный логин и пароль
+                    frameColor = document.getElementById(a);
+                    frameColor.setAttribute("style", "border: 2px solid red;");
+                }
+            
+                function AuthorizationText (text, color, id) {//Выводит сообщение о результате авторизации
+                    let alert = document.createElement("p");  
+                    alert.innerHTML = text;
+                    form.appendChild(alert);
+                    alert.style.color = color; 
+                    alert.style.textAlign = "center";                     
+                    alert.id = id;    
+                    }   
+                }
+
+                function ClearForm () {
+                    FrameSetColor("inputInfoLog");
+                    FrameSetColor("inputInfoPass");
+                    
+                    function FrameSetColor(a) {
+                        frameColor = document.getElementById(a);
+                        frameColor.setAttribute("style", "border: 1px solid rgb(190, 189, 189);");
+                    }
+                }
+            }
+
+    </script>
+        
+</head>
+<body>
+    <div class="container">
+        <div class="mainform">
+            <div class="heading">
+                <p>LOGIN FORM</p>
+            </div>
+            <form method="POST" action="" enctype="text/plain">
+            <div class="inpform">
+                <input id="inputInfoLog" name="login" type="text" placeholder="Login">
+                <input id="inputInfoPass" name="password" type="password" placeholder="Password">
+            </div>
+            <div class="rembut">
+                <label><input type="checkbox">Remember me</label>
+                <div class="form-row">
+                    <input id = "button" type="button" value="Вход" />
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div> 
+</body>
+</html>

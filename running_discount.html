@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running away discount</title>
+
+    <!-- Сделайте кнопку с надписью «получить скидку». При наведение кнопка 
+        должна «убегать» от курсора не давая пользователю нажать себя. -->
+<style>
+    button {
+        position: relative;
+        width: auto;
+        height: 40px;
+        color:black;
+        font-weight: bold;
+        background-color: rgb(221, 226, 225);
+        box-shadow: 3px 2px rgb(122, 122, 156);
+        border-radius: 10%;
+    }
+</style>
+
+</head>
+<body>
+        <button>Get a discount</button>
+        
+    <script>
+        let button = document.querySelector("button");
+                
+        button.addEventListener("mouseover", function() {
+            let posx = (Math.random() * (document.documentElement.clientWidth - 200)).toFixed();
+            let posy = (Math.random() * (document.documentElement.clientHeight - 40)).toFixed();
+            button.style.left = posx + "px";
+            button.style.top = posy + "px";
+        });
+                        
+    </script>
+</body>
+</html>

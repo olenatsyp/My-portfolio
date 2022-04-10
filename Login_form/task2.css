@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    background-color: rgb(218, 241, 188);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 15px;
+}
+.mainform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+    background-color: white;
+    border: 8px solid rgb(75, 127, 129);
+    margin: 5% 10% 3% 10%;
+}
+.heading {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(246, 246, 248);
+    color: rgb(88, 92, 92);
+    font-size: 1.1em; 
+    font-weight: bold;
+    border-bottom: 2px solid rgb(190, 189, 189);
+ }
+ p {
+     margin: 2%;
+ }
+ form {
+     width: 100%;
+ }
+ .inpform {
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0 2% 0;
+}
+ #inputInfoLog, #inputInfoPass {
+     width: 80%;
+     height: 30px;
+     margin: 3%;
+     border: 1px solid rgb(190, 189, 189);
+     outline: 5px solid rgb(246, 246, 248);
+    }
+input::-webkit-input-placeholder { 
+    color: rgb(190, 189, 189); 
+    padding-left: 5px;
+}
+.rembut {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5%;
+}
+.form-row {
+    clear: both;
+}
+#button {
+    background-color: rgb(219, 247, 203);
+    width: 80px;
+    height: 35px;
+    color: rgb(2, 41, 41);
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid rgb(161, 199, 214);
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px rgb(120, 147, 158);
+}
+
+#button:hover {
+    background-color: rgb(144, 180, 97);
+}
+label {
+    color:rgb(110, 114, 114);
+    font-size: 14px;
+    margin-right: 1%;
+ }
+

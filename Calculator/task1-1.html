@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор через свойства</title>
+
+    <!-- Создайте страницу-калькулятор.
+
+Разместите на странице два поля ввода и кнопки для арифметических операций над данными введенными 
+в поля ввода. Реализуйте данную страницу двумя способами – с использованием модели DOM Level 0 
+(через свойства) и DOM Level 2. -->
+
+</head>
+<body>
+    <span>Введите первое число: </span> 
+    <input id = "number1" type="text"> <br/><br/>
+    <span>Введите второе число: </span> 
+    <input id = "number2" type="text"> <br/><br/>
+    <button id="addButton" onclick="add ()">+</button>
+    <button id="subtractButton" onclick="subtract ()">-</button>
+    <button id="multButton" onclick="mult ()">*</button>
+    <button id="divideButton" onclick="divide ()">/</button>
+
+    <script>
+        let number1 = document.getElementById("number1");
+        let number2 = document.getElementById("number2");
+        
+        function add () {
+            alert((Number(number1.value) + Number(number2.value)));   
+        }
+
+        function subtract() {
+            alert((number1.value) - (number2.value));   
+        }
+        
+        function mult () {
+            alert((number1.value) * (number2.value));
+        }
+
+        function divide() {
+            alert((number1.value) / (number2.value));
+        }
+
+   </script>
+</body>
+</html>

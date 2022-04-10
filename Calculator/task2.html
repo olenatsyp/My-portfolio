@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Целые числа</title>
+
+    <!-- Переделайте сценарий предыдущего примера таким образом, чтобы в поля вводов можно было 
+        вводить только целочисленные значения. Используйте для этого модель обработки событий DOM Level 2. -->
+</head>
+<body>
+    <div id="input">
+        <span>Введите первое число: </span> 
+        <input id = "field1" type="text"> <br/><br/>
+        <span>Введите второе число: </span> 
+        <input id = "field2" type="text"> <br/><br/>
+    </div>
+
+    <button id="addButton">+</button>
+    <button id="subtractButton">-</button>
+    <button id="multButton">*</button>
+    <button id="divideButton">/</button>
+
+    <script>
+
+        let field1 = document.getElementById("field1");
+        let field2 = document.getElementById("field2");
+        
+        let addButton = document.getElementById("addButton");
+        let subtractButton = document.getElementById("subtractButton");
+        let multButton = document.getElementById("multButton");
+        let divideButton = document.getElementById("divideButton");
+
+        let buttons = document.querySelectorAll("button");
+
+        buttons.forEach (btn => {
+            btn.addEventListener ("click", function(e) {
+                let a = field1.value;
+                let b = field2.value;
+                if (Number.isInteger(Number(a)) && Number.isInteger(Number(b))) {
+                    if (btn == addButton) alert(Number(a) + Number(b));
+                    if (btn == subtractButton) alert(a - b);
+                    if (btn == multButton) alert (a * b);
+                    if (btn == divideButton) alert (a / b);  
+                } else { 
+                    e.preventDefault(); // событие отменяется, если числа дробные
+                }
+            });
+        });          
+        
+   </script>
+</body>
+</html>

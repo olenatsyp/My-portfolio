@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millionaire game</title>
+</head>
+<body>
+    <!-- <pre>
+        Игра «Как стать миллионером».
+        Подумайте, как можно реализовать подобный сценарий с использованием массивов и объектов. Помните, 
+        что для каждого вопроса нужно прописать: вопрос, 4 варианта ответа, правильный ответ (который будем 
+        сравнивать с тем, что ввел пользователь, сумма которую выиграл пользователь). Определите минимум 5 
+        вопросов. Вопросы с вариантами ответов вы можете придумать самостоятельно, а можете воспользоваться 
+        поиском.      
+    </pre> -->
+    <script>
+        
+        let quest = [
+            {
+                question: "Which type of bread there was hardly to find in Soviet shops?",
+                answer1: "a) Rye",
+                answer2: "b) Brick",
+                answer3: "c) Fresh",
+                answer4: "d) Loaf",
+                rightAnswer: "c",
+                prize: 500,
+                guaranteedAmount: 0
+            },
+            {
+                question: "How the Brezhnev's period was called in history?",
+                answer1: "a) Crap",
+                answer2: "b) Reconstruction",
+                answer3: "c) Downtime",
+                answer4: "d) Stagnation",
+                rightAnswer: "d",
+                prize: 1000,
+                guaranteedAmount: 0
+            },
+            {
+                question: "What age is considered adulthood?",
+                answer1: "a) 14 ",
+                answer2: "b) 16 ",
+                answer3: "c) 18 ",
+                answer4: "d) 21 ",
+                rightAnswer: "c",
+                prize: 2000,
+                guaranteedAmount: 0
+            },
+            {
+                question: "What kind of cake exists?",
+                answer1: "a) Prince Volodymyr",
+                answer2: "b) Napoleon",
+                answer3: "c) King Pea",
+                answer4: "d) Ivan the Terrible",
+                rightAnswer: "b",
+                prize: 3000,
+                guaranteedAmount: 0
+            },
+            {
+                question: "What is the name of band --Hands Up-- lead singer?",
+                answer1: "a) Anton",
+                answer2: "b) Sergiy",
+                answer3: "c) Roman",
+                answer4: "d) Ivan",
+                rightAnswer: "b",
+                prize: 5000,
+                guaranteedAmount: 5000
+            },
+            {
+                question: "What David struck Goliath with?",
+                answer1: "a) Beauty",
+                answer2: "b) Good manners",
+                answer3: "c) Stone",
+                answer4: "d) Singing",
+                rightAnswer: "c",
+                prize: 8000,
+                guaranteedAmount: 5000
+            },
+            {
+                question: "What is the name of the device for aiming firearms?",
+                answer1: "a) Gunpoint",
+                answer2: "b) Lug",
+                answer3: "c) Peephole",
+                answer4: "d) Trigger",
+                rightAnswer: "a",
+                prize: 10000,
+                guaranteedAmount: 5000
+            },
+            {
+                question: "What people call the simplest camera?",
+                answer1: "a) Powderpuff",
+                answer2: "b) Soapbox",
+                answer3: "c) Waffle maker",
+                answer4: "d) A box",
+                rightAnswer: "b",
+                prize: 13000,
+                guaranteedAmount: 5000
+            },
+            {
+                question: "There is a famous proverb about kicking something out with one's own kind",
+                answer1: "a) A lurch by a lurch",
+                answer2: "b) A clone by a clone",
+                answer3: "c) A wedge by a wedge",
+                answer4: "d) A clan by a clan",
+                rightAnswer: "c",
+                prize: 15000,
+                guaranteedAmount: 5000
+            },
+            {
+                question: "What the unsociable Nightingale the Robber greeted random passers-by with?",
+                answer1: "a) Salt and bread",
+                answer2: "b) Giccup",
+                answer3: "c) Giggling",
+                answer4: "d) Whistling",
+                rightAnswer: "d",
+                prize: 25000,
+                guaranteedAmount: 25000
+            },
+            {
+                question: "Who according to the proverb pays twice?",
+                answer1: "a) a young man",
+                answer2: "b) a stupid man",
+                answer3: "c) a stingy man",
+                answer4: "d) a cool man",
+                rightAnswer: "c",
+                prize: 50000,
+                guaranteedAmount: 25000
+            },
+            {
+                question: "What, according to Darwin's theory, did an ape have to go through to become a man??",
+                answer1: "a) Fire and Copper",
+                answer2: "b) Natural selection",
+                answer3: "c) All levels in Counter-strike",
+                answer4: "d) Arificial selection",
+                rightAnswer: "b",
+                prize: 100000,
+                guaranteedAmount: 25000
+            },
+            {
+                question: "What is the name of Arkady Gaidar's cautionary tale?",
+                answer1: "a) Tamerlan and his team",
+                answer2: "b) Timur and his team",
+                answer3: "c) Genghis Khan and his team",
+                answer4: "d) Ali Baba and his team",
+                rightAnswer: "b",
+                prize: 250000,
+                guaranteedAmount: 25000
+            },
+            {
+                question: "Which river did Julius Caesar cross with the words --The die is cast-- ?",
+                answer1: "a) Rubicon",
+                answer2: "b) Seine",
+                answer3: "c) Jordan",
+                answer4: "d) Amazon",
+                rightAnswer: "a",
+                prize: 500000,
+                guaranteedAmount: 25000
+            },
+            {
+                question: "What did the Greek mythological hero Hercules perform?",
+                answer1: "a) 12 actions",
+                answer2: "b) 12 miracles",
+                answer3: "c) 12 feats",
+                answer4: "d) 12 deeds",
+                rightAnswer: "c",
+                prize: 1000000,
+                guaranteedAmount: 1000000
+            }
+        ];
+       
+        let counter = 0;
+
+        for (let index = 0; index < quest.length; index++) {
+            let userAnswer = prompt(`Question ${index+1} from ${quest.length}. \n\r\n${quest[index].question} \r\n${quest[index].answer1} \r\n${quest[index].answer2} \r\n${quest[index].answer3} \r\n${quest[index].answer4}`);
+            if (userAnswer === quest[index].rightAnswer) {
+                counter++;
+                if (counter < quest.length) {
+                    let confirmed = confirm("This is a right answer. Continue game?");
+                    if (!confirmed) {
+                        alert(`You finished the game. Your winnings are ${quest[index].prize} dollars.`);
+                        break;
+                        }
+                }
+                else {
+                    alert(`Congrats! You are a millionaire!`);
+                    break;
+                }  
+            }
+            else {
+                alert(`This is a wrong answer. Your winnings are ${quest[index].guaranteedAmount} dollars.`);
+                break;
+            } 
+        }
+    </script>
+</body>
+
+</html>
