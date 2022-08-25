@@ -1,0 +1,121 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  flex-shrink: 2;
+}
+p,
+h3 {
+  font-family: sans-serif;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: black;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.heading {
+  color: rgb(34, 177, 34);
+  font-family: sans-serif;
+  font-size: 3vw;
+}
+.lheading {
+  font-size: 1.3vw;
+  margin-bottom: 1%;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+.content {
+  display: flex;
+  width: 12%;
+  height: auto;
+  background-color: rgb(34, 177, 34);
+  text-align: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  color: white;
+  font-size: 1.6vw;
+  margin: 2%;
+}
+h3 {
+  font-size: 1.5vw;
+}
+.pictures {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+.imagearray1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.imagearray2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.imagearray3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.one {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  height: 100%;
+}
+.two {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 23.5%;
+}
+.three {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15%;
+}
+.third {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  background-image: url(img/image10.jpg);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  min-height: 120%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: rgb(34, 177, 34);
+  color: white;
+  font-size: 1.3vw;
+}
