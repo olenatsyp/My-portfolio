@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Task</title>
+</head>
+
+<body>
+   
+    <script>
+
+        const salaries = {
+            JuniorDeveloper: { salary: 400, tax: "10%" },
+            MiddleDeveloper: { salary: 1600, tax: "12%" },
+            SeniorDeveloper: { salary: 4899, tax: "14%" },
+            GroupManager: { salary: 5100, tax: "22%" },
+            Architect: { salary: 7200, tax: "30%" },
+        }
+
+        const team = [
+            { name: "Andrew", specialization: "Architect" },
+            { name: "Polly", specialization: "MiddleDeveloper" },
+            { name: "Mykhailo", specialization: "SeniorDeveloper" },
+            { name: "Sergii", specialization: "SeniorDeveloper" },
+            { name: "Max", specialization: "SeniorDeveloper" },
+            { name: "John", specialization: "MiddleDeveloper" },
+            { name: "Masha", specialization: "JuniorDeveloper" },
+            { name: "George", specialization: "GroupManager" },
+        ]
+        
+        function calculateTeamFinanceReport(salaries, team) {
+            
+            function checkKeysNumberRange(object, min, max) {
+                const objectLength = Object.keys(object).length;
+                if ( ! (objectLength >= min && objectLength <= max )) {
+                    console.error("The number of properties in object must be between " + min + " and " + max + " !");
+                }
+            }
+            
+            checkKeysNumberRange(salaries, 1, 10);
+            checkKeysNumberRange(team, 1, 100);
+    
+            function checkTeamSpecialization (team, salaries) {
+                let correctedTeam = team;
+
+                for (let i = 0; i < team.length; i++) {
+                    let teamSpecialization = team[i].specialization;
+                    if (!salaries.hasOwnProperty(teamSpecialization)) {
+                        correctedTeam = correctedTeam.filter((e) => e.specialization != teamSpecialization);
+                    }  
+                } 
+                return (correctedTeam);
+            }    
+            
+            const validatedTeam = checkTeamSpecialization(team, salaries);
+
+            function checkTaxString (object) {
+                Object.keys(object)
+                    .forEach(function eachKey(key) {
+                        let tax = object[key].tax;
+                        let salary = object[key].salary;
+                        let taxPattern = /\d{1,2}\%/g;
+                        if (typeof(tax) !== 'string' || !taxPattern.test(tax)) {
+                            throw new Error("The value of tax must be 'string' and match template `{tax}%`!");
+                        }
+                        
+                        if (parseInt(tax) < 1 || parseInt(tax) > 99) {
+                           throw new Error("Value of tax is invalid");
+                        }
+                        
+                        if ( salary < 100 || salary > 100000) {
+                            throw new Error("Value of salary is invalid");
+                        }
+                });        
+            }         
+            
+            checkTaxString (salaries);
+            
+            var budgetObj = {};
+
+            const countRoles = validatedTeam.reduce((accumulator, item) => { 
+                accumulator[item.specialization] = accumulator[item.specialization] ? (accumulator[item.specialization] + 1) : 1;
+                return accumulator;
+            }, {});   
+            
+            let totalTeamSalary = 0; 
+
+            for (const propertyName in countRoles) {
+                let salaryInfo = salaries[propertyName]; 
+                let teamRoleCount = countRoles[propertyName]; 
+                let totalRoleNetSalary = salaryInfo.salary * teamRoleCount;
+                
+                let taxRate = parseInt(salaryInfo.tax);
+                let totalRoleGrossSalary = totalRoleNetSalary * (1 + (taxRate/100));                 
+                                
+                totalTeamSalary += totalRoleGrossSalary;
+
+                let propForBudgetObject = "totalBudget" + propertyName; 
+                budgetObj[propForBudgetObject] = Math.trunc(totalRoleGrossSalary);
+            }
+            
+            budgetObj["totalBudgetTeam"] = Math.trunc(totalTeamSalary);
+
+            return(budgetObj);    
+        }
+        
+        const financeReport = calculateTeamFinanceReport(salaries, team); 
+        console.log(JSON.stringify(financeReport, null, 4));
+         
+    </script>
+</body>
+</html>

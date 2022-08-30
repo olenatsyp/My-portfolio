@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Разработайте страницу, разместите на ней четыре кнопки – «вверх», «вниз», «влево», «вправо». 
+        Поместите на странице div с текстом. При нажатии на кнопки должна запускаться анимация, которая 
+        перемещает div на 100 px в соответствующем направлении. -->
+    <style>
+        #div1 {
+            position: relative;
+            width: 100px;
+            background-color: cadetblue;
+            font-weight: bold;
+            font-size: 16px;
+            color:darkblue;
+        }
+
+        #top, #down, #right, #left {
+            position: absolute;
+            box-shadow: 2px 2px 1px grey;
+            font-weight: bold;
+        }
+        #top {
+            top: 30px;
+            left: 60px;
+        }
+        #down {
+            top: 130px;
+            left: 55px;
+        }
+
+        #right {
+            top: 80px;
+            left:100px;
+        }
+        #left {
+            top: 80px;
+            left:10px;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function() {
+             
+            let div1 = document.getElementById("div1");
+            let posx = 600;
+            let posy = 300;
+            
+            div1.style.left = posx + "px";
+            div1.style.top = posy + "px";
+            
+            document.getElementById("top").onclick = function() {    
+                posy -= 100;
+                div1.style.top = posy + "px";
+            }
+            
+            document.getElementById("down").onclick = function() {    
+                posy += 100;
+                div1.style.top = posy + "px";
+            }    
+            
+            document.getElementById("left").onclick = function() {    
+                posx -= 100;
+                div1.style.left = posx + "px";
+            }
+
+            document.getElementById("right").onclick = function() {    
+                posx += 100;
+                div1.style.left = posx + "px";
+            }
+        }    
+    </script>
+
+</head>
+<body>
+    <div id="div1">DIV's TEXT</div>
+    <div class="buttons">
+        <input id = "top" type="button" value="TOP" />
+        <input id = "down" type="button" value="DOWN" />
+        <input id = "left" type="button" value="LEFT" />
+        <input id = "right" type="button" value="RIGHT" />
+    </div>
+</body>
+</html>
